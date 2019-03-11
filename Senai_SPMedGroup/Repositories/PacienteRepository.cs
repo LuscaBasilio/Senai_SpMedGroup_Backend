@@ -1,4 +1,5 @@
-﻿using Senai_SPMedGroup.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Senai_SPMedGroup.Repositories
         {
             using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                return ctx.Consulta.ToList();
+                return ctx.Consulta.Include("Pacientes").ToList();
             }
         }
     }

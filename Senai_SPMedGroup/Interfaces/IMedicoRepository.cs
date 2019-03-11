@@ -7,6 +7,6 @@ namespace Senai_SPMedGroup.Interfaces
     {
         List<Consulta>VerConsultas();
 
-        void CadastrarConsulta(Consulta consulta);
+        void DescricaoProntuario(Consulta desc);
     }
 }
