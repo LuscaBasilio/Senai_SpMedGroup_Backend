@@ -8,10 +8,10 @@ namespace Senai_SPMedGroup.Interfaces
 {
     interface IUsuarioRepository
     {
-        Usuarios Cadastrar();
-
         void Alterar(Usuarios usuario);
 
-        void Deletar(Usuarios usuario);
+        void Cadastrar(Usuarios usuario);
+
+        void Deletar(int id);
     }
 }

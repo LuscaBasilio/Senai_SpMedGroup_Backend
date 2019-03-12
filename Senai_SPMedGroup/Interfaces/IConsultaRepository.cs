@@ -8,7 +8,7 @@ namespace Senai_SPMedGroup.Interfaces
 {
     interface IConsultaRepository
     {
-        void CadastrarConsulta(Pacientes paciente, Medicos medico, Consulta dataConsulta);
+        void CadastrarConsulta(Consulta consulta);
 
         void CancelarAgendamento(int Id);
     }

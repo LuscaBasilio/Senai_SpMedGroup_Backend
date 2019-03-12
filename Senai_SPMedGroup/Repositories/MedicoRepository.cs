@@ -15,6 +15,7 @@ namespace Senai_SPMedGroup.Repositories
             using(SpMedGroupContext ctx = new SpMedGroupContext())
             {
                 ctx.Consulta.Update(desc);
+                ctx.SaveChanges();
             }
         }
 
@@ -22,7 +23,8 @@ namespace Senai_SPMedGroup.Repositories
         {
             using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                return ctx.Consulta.Include("Medicos").ToList();
+                //Lambda pra encontrar a FOREIGN KEY REFERENCES MEDICOS(ID)
+                return ctx.Consulta.Include(x => x.IdMedicoNavigation).ToList();
             }
         }
     }

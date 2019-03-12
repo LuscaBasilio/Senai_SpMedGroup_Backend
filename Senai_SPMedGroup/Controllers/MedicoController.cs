@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Senai_SPMedGroup.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Senai_SPMedGroup.Domains;
+using System;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using Senai_SPMedGroup.Interfaces;
 
 namespace Senai_SPMedGroup.Controllers
 {
@@ -14,8 +14,41 @@ namespace Senai_SPMedGroup.Controllers
     [ApiController]
     public class MedicoController : ControllerBase
     {
-        [HttpGet]
-        
-        
+        private IMedicoRepository MedicoRepository { get; set; }
+
+        public MedicoController()
+        {
+            MedicoRepository = new MedicoRepository();
+        }
+
+        //Favor colocar Authorized mais tarde ;-;
+        [HttpGet("verConsultas")]
+        public IActionResult verConsultas()
+        {
+            try
+            {
+                MedicoRepository.VerConsultas();
+                return Ok(); 
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        //Favor colocar Authorized mais tarde ;-;
+        [HttpPost("descricao")]
+        public IActionResult AlterarDescricao(Consulta desc)
+        {
+            try
+            {
+                MedicoRepository.DescricaoProntuario(desc);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

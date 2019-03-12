@@ -14,7 +14,7 @@ namespace Senai_SPMedGroup.Repositories
         {
             using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                return ctx.Consulta.Include("Pacientes").ToList();
+                return ctx.Consulta.Include(x => x.IdPacienteNavigation).ToList();
             }
         }
     }
