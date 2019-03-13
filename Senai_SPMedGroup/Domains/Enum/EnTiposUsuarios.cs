@@ -10,5 +10,6 @@ namespace Senai_SPMedGroup.Domains.Enum
         Paciente = 1,
         Medico = 2,
         Administrador = 3
+            //comentaro
     }
 }

@@ -49,5 +49,6 @@ namespace Senai_SPMedGroup.Controllers
                 return BadRequest(ex);
             }
         }
+        //comentaro
     }
 }

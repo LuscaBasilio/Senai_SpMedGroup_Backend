@@ -17,5 +17,6 @@ namespace Senai_SPMedGroup.Repositories
                 return ctx.Consulta.Include(x => x.IdPacienteNavigation).ToList();
             }
         }
+        //comentaro
     }
 }

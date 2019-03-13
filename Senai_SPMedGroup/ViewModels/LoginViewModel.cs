@@ -14,6 +14,7 @@ namespace Senai_SPMedGroup.ViewModels
         [Required(ErrorMessage = "Insira uma Senha")]
         [StringLength(150, MinimumLength = 3,ErrorMessage = "Senha bugada")]
         public string Senha { get; set; }
+        //comentaro
          
     }
 }
