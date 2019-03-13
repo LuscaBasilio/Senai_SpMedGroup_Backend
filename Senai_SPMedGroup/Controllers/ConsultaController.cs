@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_SPMedGroup.Domains;
@@ -23,19 +24,22 @@ namespace Senai_SPMedGroup.Controllers
         }
 
         [HttpPost("cadastro")]
+        [Authorize (Roles = "Administrador")]
         public IActionResult CadastrarConsulta(Consulta consulta)
         {
             try
             {
                 ConsultaRepository.CadastrarConsulta(consulta);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
-        [HttpPost]
+        [HttpPut]
+        [Authorize(Roles = "Administrador")]
         public IActionResult CancelarConsulta(int id)
         {
             try
@@ -45,7 +49,7 @@ namespace Senai_SPMedGroup.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
     }

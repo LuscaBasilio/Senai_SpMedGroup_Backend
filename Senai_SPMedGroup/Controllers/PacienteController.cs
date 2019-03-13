@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
 using Senai_SPMedGroup.Repositories;
 
@@ -22,16 +24,16 @@ namespace Senai_SPMedGroup.Controllers
         }
 
         [HttpGet]
+        [Authorize (Roles = "Paciente")]
         public IActionResult VisualizarConsultas()
         {
             try
             {
-                PacienteRepository.VisualizarConsulta();
-                return Ok();
+                return Ok(new PacienteRepository().VisualizarConsulta());
             }
             catch(Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
     }

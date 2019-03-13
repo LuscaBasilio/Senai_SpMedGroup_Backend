@@ -21,23 +21,22 @@ namespace Senai_SPMedGroup.Controllers
             MedicoRepository = new MedicoRepository();
         }
 
-        //Favor colocar Authorized mais tarde ;-;
         [HttpGet("verConsultas")]
-        public IActionResult verConsultas()
+        [Authorize(Roles = "Medico")]
+        public IActionResult VerConsultas()
         {
             try
             {
-                MedicoRepository.VerConsultas();
-                return Ok(); 
+                return Ok(new MedicoRepository().VerConsultas()); 
             }
             catch(Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
 
-        //Favor colocar Authorized mais tarde ;-;
-        [HttpPost("descricao")]
+        [HttpPut("descricao")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult AlterarDescricao(Consulta desc)
         {
             try

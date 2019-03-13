@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_SPMedGroup.Domains;
@@ -22,7 +23,24 @@ namespace Senai_SPMedGroup.Controllers
             UsuarioRepository = new UsuarioRepository();
         }
 
+        //RESPOSTA DA VIDA ABAIXO vvv
+        [HttpGet("ver")]
+        [Authorize(Roles = "Administrador")]
+        public IActionResult VisualizarConsul()
+        {
+            try
+            {
+                return Ok(new SpMedGroupContext().Consulta.ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        //RESPOSTA DA VIDA ACIMA ^^^
+
         [HttpPost("cadastrar")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Cadastrar(Usuarios usuario)
         {
             try
@@ -36,7 +54,8 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpPost("alterar")]
+        [HttpPut("alterar")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Alterar(Usuarios usuario)
         {
             try
@@ -44,13 +63,14 @@ namespace Senai_SPMedGroup.Controllers
                 UsuarioRepository.Alterar(usuario);
                 return Ok();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex);
             }
         }
 
-        [HttpDelete("deletar")]
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Deletar(int id)
         {
             try
