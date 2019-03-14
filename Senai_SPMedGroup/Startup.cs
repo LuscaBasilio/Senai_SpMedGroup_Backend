@@ -36,8 +36,7 @@ namespace Senai_SPMedGroup
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SpMedGroupAuthenticationKey")),
-                //Mudar o tempo para 30 minutos, 400 foi para teste mesmo, to com preguiço
-                ClockSkew = TimeSpan.FromMinutes(400),
+                ClockSkew = TimeSpan.FromMinutes(30),
                 ValidIssuer = "Senai_SPMedGroup",
                 ValidAudience = "Senai_SPMedGroup"
             });
@@ -53,6 +52,5 @@ namespace Senai_SPMedGroup
 
             app.UseMvc();
         }
-        //comentaro
     }
 }

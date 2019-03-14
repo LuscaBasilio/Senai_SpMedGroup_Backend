@@ -1,4 +1,5 @@
-﻿using Senai_SPMedGroup.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,14 @@ namespace Senai_SPMedGroup.Repositories
                 }
                 ctx.Usuarios.Remove(usuarioRemover);
                 ctx.SaveChanges();
+            }
+        }
+
+        public Usuarios EncontrarUsuario(string email, string senha)
+        {
+            using(SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+               return ctx.Usuarios.ToList().Find(x => x.Email == email && x.Senha == senha);
             }
         }
     }

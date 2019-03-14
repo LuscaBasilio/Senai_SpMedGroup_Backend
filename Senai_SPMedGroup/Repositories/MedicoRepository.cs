@@ -3,19 +3,31 @@ using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Senai_SPMedGroup.Repositories
 {
     public class MedicoRepository : IMedicoRepository
     {
+        private string StringConexao = "Data Source=.\\SqlExpress; Initial Catalog=SENAI_SPMEDGROUP_MANHA;user id=sa; pwd=132";
         //Atualiza a descrição do prontuario de um paciente
+
+        //NÃO QUERIA TER USADO ISSO ;-;
         public void DescricaoProntuario(Consulta desc)
         {
-            using(SpMedGroupContext ctx = new SpMedGroupContext())
+            using (SqlConnection con = new SqlConnection())
             {
-                ctx.Consulta.Update(desc);
-                ctx.SaveChanges();
+                string Inserte = "INSERT INTO CONSULTA WHERE (OBSERVACAO) VALUES (@OBSERVACAO)";
+
+                con.Open();
+                
+                using(SqlCommand ctx = new SqlCommand(Inserte, con))
+                {
+                    ctx.Parameters.AddWithValue("@OBSERVACAO", desc.Observacao);
+
+                    ctx.ExecuteNonQuery();
+                }
             }
         }
 
@@ -27,6 +39,5 @@ namespace Senai_SPMedGroup.Repositories
                 return ctx.Consulta.Include(x => x.IdMedicoNavigation).ToList();
             }
         }
-        //comentaro
     }
 }
