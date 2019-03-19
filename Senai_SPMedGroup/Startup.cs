@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Senai_SPMedGroup
 {
@@ -40,6 +41,14 @@ namespace Senai_SPMedGroup
                 ValidIssuer = "Senai_SPMedGroup",
                 ValidAudience = "Senai_SPMedGroup"
             });
+
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new Info
+                {
+                    Title = "SpMedGroup", Version = "v1"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +58,13 @@ namespace Senai_SPMedGroup
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication();
+
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "SpMedGroup");
+            });
 
             app.UseMvc();
         }

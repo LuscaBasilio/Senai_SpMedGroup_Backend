@@ -46,7 +46,7 @@ namespace Senai_SPMedGroup.Repositories
         {
             using(SpMedGroupContext ctx = new SpMedGroupContext())
             {
-               return ctx.Usuarios.ToList().Find(x => x.Email == email && x.Senha == senha);
+               return ctx.Usuarios.Include(x => x.IdTipoUsuarioNavigation).FirstOrDefault(x => x.Email == email && x.Senha == senha);
             }
         }
     }

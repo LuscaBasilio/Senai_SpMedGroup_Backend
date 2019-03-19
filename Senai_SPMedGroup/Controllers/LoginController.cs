@@ -22,13 +22,12 @@ namespace Senai_SPMedGroup.Controllers
             UsuarioRepository = new UsuarioRepository();
         }
 
-        [HttpPost]
+        [HttpPost("log")]
         public IActionResult Login(LoginViewModel login)
         {
             try
             {
                 Usuarios usuario = UsuarioRepository.EncontrarUsuario(login.Email, login.Senha);
-
                 if (usuario == null)
                 {
                     return NotFound(new
@@ -41,8 +40,8 @@ namespace Senai_SPMedGroup.Controllers
                 {
                         new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, usuario.Id.ToString()),
-                        new Claim(ClaimTypes.Role, usuario.IdTipoUsuario),
-                        new Claim("usario","lal men")
+                        new Claim(ClaimTypes.Role, usuario.IdTipoUsuarioNavigation.Tipo.ToString()),
+                        //new Claim("usario","valor")
                     };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SpMedGroupAuthenticationKey"));
@@ -50,20 +49,17 @@ namespace Senai_SPMedGroup.Controllers
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
                 var token = new JwtSecurityToken(
-                    issuer: "Senai_SpMedGroup",
-                    audience: "Senai_SpMedGroup",
+                    issuer: "Senai_SPMedGroup",
+                    audience: "Senai_SPMedGroup",
                     claims: claims,
                     expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: creds);
-
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token)
-                });
+                Console.WriteLine(token);
+                return Ok(new { M = "Acesso livre!", token = new JwtSecurityTokenHandler().WriteToken(token) });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(ex);
             }
         }
     }

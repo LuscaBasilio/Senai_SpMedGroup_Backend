@@ -16,7 +16,7 @@ namespace Senai_SPMedGroup.Repositories
         //NÃO QUERIA TER USADO ISSO ;-;
         public void DescricaoProntuario(Consulta desc)
         {
-            using (SqlConnection con = new SqlConnection())
+            using (SqlConnection con = new SqlConnection(StringConexao))
             {
                 string Inserte = "INSERT INTO CONSULTA WHERE (OBSERVACAO) VALUES (@OBSERVACAO)";
 
@@ -25,7 +25,6 @@ namespace Senai_SPMedGroup.Repositories
                 using(SqlCommand ctx = new SqlCommand(Inserte, con))
                 {
                     ctx.Parameters.AddWithValue("@OBSERVACAO", desc.Observacao);
-
                     ctx.ExecuteNonQuery();
                 }
             }

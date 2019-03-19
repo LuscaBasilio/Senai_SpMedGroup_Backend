@@ -22,7 +22,7 @@ namespace Senai_SPMedGroup.Controllers
         }
 
         [HttpGet("verConsultas")]
-        [Authorize(Roles = "Medico")]
+        [Authorize(Roles = "Médico")]
         public IActionResult VerConsultas()
         {
             try
@@ -36,7 +36,7 @@ namespace Senai_SPMedGroup.Controllers
         }
 
         [HttpPut("descricao")]
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Médico")]
         public IActionResult AlterarDescricao(Consulta desc)
         {
             try

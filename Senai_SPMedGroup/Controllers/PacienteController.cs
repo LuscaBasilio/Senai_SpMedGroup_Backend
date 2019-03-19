@@ -24,7 +24,7 @@ namespace Senai_SPMedGroup.Controllers
         }
 
         [HttpGet]
-        [Authorize (Roles = "Paciente")]
+        [Authorize (Roles = "Paciente, Administrador")]
         public IActionResult VisualizarConsultas()
         {
             try
