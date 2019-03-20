@@ -25,6 +25,7 @@ namespace Senai_SPMedGroup.Controllers
 
         //RESPOSTA DA VIDA ABAIXO vvv
         [HttpGet("ver")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult VisualizarConsul()
         {
             try

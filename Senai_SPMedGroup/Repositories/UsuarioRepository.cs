@@ -32,10 +32,12 @@ namespace Senai_SPMedGroup.Repositories
         {
             using(SpMedGroupContext ctx = new SpMedGroupContext())
             {
+                string a;
+
                 Usuarios usuarioRemover = ctx.Usuarios.Find(id);
                 if(usuarioRemover == null)
                 {
-                    // :v
+                    a = Convert.ToString(new { m ="Non ecziste" });
                 }
                 ctx.Usuarios.Remove(usuarioRemover);
                 ctx.SaveChanges();

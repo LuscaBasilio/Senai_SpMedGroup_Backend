@@ -1,8 +1,13 @@
-﻿using Senai_SPMedGroup.Domains;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.EntityFrameworkCore;
+using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
+using Senai_SPMedGroup.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Senai_SPMedGroup.Repositories
@@ -30,6 +35,19 @@ namespace Senai_SPMedGroup.Repositories
                     ctx.Consulta.Update(consulta);
                     ctx.SaveChanges();
                 }
+            }
+        }
+
+        public List<Consulta> ConsultarConsulta(int IdUser)
+        {
+            using (SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                Usuarios usuario = ctx.Usuarios.Find(IdUser);
+                if (usuario.IdTipoUsuarioNavigation.Equals(IdUser))
+                {
+                   return ctx.Consulta.Include(Convert.ToString(IdUser)).ToList();
+                }
+                return null;
             }
         }
     }

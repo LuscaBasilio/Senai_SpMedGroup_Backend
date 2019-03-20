@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -51,6 +53,27 @@ namespace Senai_SPMedGroup.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        public IActionResult ConsultarConsulta(int IdUser)
+        {
+
+
+            if (User.HasClaim(ClaimTypes.Role, "Adiministrador"))
+            {
+
+            }
+
+            if (User.HasClaim(ClaimTypes.Role, "Paciente"))
+            {
+
+            }
+
+            if(User.HasClaim(ClaimTypes.Role, "Médico"))
+            {
+
+            }
+
         }
     }
 }

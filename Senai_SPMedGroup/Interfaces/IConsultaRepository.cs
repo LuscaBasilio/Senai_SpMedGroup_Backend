@@ -1,4 +1,5 @@
 ﻿using Senai_SPMedGroup.Domains;
+using Senai_SPMedGroup.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace Senai_SPMedGroup.Interfaces
         void CadastrarConsulta(Consulta consulta);
 
         void CancelarAgendamento(int Id);
+
+        List<Consulta> ConsultarConsulta(int IdUser);
     }
 }

@@ -44,11 +44,11 @@ namespace Senai_SPMedGroup.Controllers
                         //new Claim("usario","valor")
                     };
 
-                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SpMedGroupAuthenticationKey"));
+                SymmetricSecurityKey key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SpMedGroupAuthenticationKey"));
 
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-                var token = new JwtSecurityToken(
+                JwtSecurityToken token = new JwtSecurityToken(
                     issuer: "Senai_SPMedGroup",
                     audience: "Senai_SPMedGroup",
                     claims: claims,
