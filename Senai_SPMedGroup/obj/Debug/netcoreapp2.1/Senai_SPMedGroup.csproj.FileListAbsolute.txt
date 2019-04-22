@@ -12,3 +12,17 @@ C:\Users\fic\source\repos\Senai_SPMedGroup\Senai_SPMedGroup\obj\Debug\netcoreapp
 C:\Users\fic\source\repos\Senai_SPMedGroup\Senai_SPMedGroup\bin\Debug\netcoreapp2.1\Senai_SPMedGroup.pdb
 C:\Users\fic\source\repos\Senai_SPMedGroup\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.dll
 C:\Users\fic\source\repos\Senai_SPMedGroup\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.pdb
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.csprojAssemblyReference.cache
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.csproj.CoreCompileInputs.cache
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.RazorAssemblyInfo.cache
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.RazorAssemblyInfo.cs
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.AssemblyInfoInputs.cache
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.AssemblyInfo.cs
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.dll
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.pdb
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\bin\Debug\netcoreapp2.1\Senai_SPMedGroup.deps.json
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\bin\Debug\netcoreapp2.1\Senai_SPMedGroup.runtimeconfig.json
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\bin\Debug\netcoreapp2.1\Senai_SPMedGroup.runtimeconfig.dev.json
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\bin\Debug\netcoreapp2.1\Senai_SPMedGroup.dll
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\bin\Debug\netcoreapp2.1\Senai_SPMedGroup.pdb
+C:\Users\47511187811\Desktop\Senai_SpMedGroup_Backend\Senai_SPMedGroup\obj\Debug\netcoreapp2.1\Senai_SPMedGroup.RazorTargetAssemblyInfo.cache

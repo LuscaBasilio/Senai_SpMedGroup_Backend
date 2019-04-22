@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Authentication;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
-using Senai_SPMedGroup.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Senai_SPMedGroup.Repositories
 {

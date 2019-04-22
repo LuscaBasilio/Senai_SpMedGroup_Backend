@@ -12,8 +12,7 @@ using Swashbuckle.AspNetCore.Swagger;
 namespace Senai_SPMedGroup
 {
 
-    /*Scaffold-DbContext "Data Source=.\SQLEXPRESS; initial catalog = SENAI_SPMEDGROUP_MANHA;user id = sa; pwd = 132"
-     * Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -Context SpMedGroupContext*/
+    /*Scaffold-DbContext "Data Source=.\SQLEXPRESS; initial catalog = SENAI_SPMEDGROUP_MANHA;user id = sa; pwd = 132" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -Context SpMedGroupContext*/
 
     public class Startup
     {

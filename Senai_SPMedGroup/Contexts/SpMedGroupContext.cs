@@ -27,7 +27,7 @@ namespace Senai_SPMedGroup.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS; initial catalog = SENAI_SPMEDGROUP_MANHA;user id = sa; pwd = 132");
             }
         }
@@ -58,17 +58,17 @@ namespace Senai_SPMedGroup.Domains
                 entity.HasOne(d => d.IdMedicoNavigation)
                     .WithMany(p => p.Consulta)
                     .HasForeignKey(d => d.IdMedico)
-                    .HasConstraintName("FK__CONSULTA__ID_MED__56B3DD81");
+                    .HasConstraintName("FK__CONSULTA__ID_MED__4924D839");
 
                 entity.HasOne(d => d.IdPacienteNavigation)
                     .WithMany(p => p.Consulta)
                     .HasForeignKey(d => d.IdPaciente)
-                    .HasConstraintName("FK__CONSULTA__ID_PAC__55BFB948");
+                    .HasConstraintName("FK__CONSULTA__ID_PAC__4830B400");
 
                 entity.HasOne(d => d.ProgressoNavigation)
                     .WithMany(p => p.Consulta)
                     .HasForeignKey(d => d.Progresso)
-                    .HasConstraintName("FK__CONSULTA__PROGRE__57A801BA");
+                    .HasConstraintName("FK__CONSULTA__PROGRE__4A18FC72");
             });
 
             modelBuilder.Entity<Especializacao>(entity =>
@@ -76,7 +76,7 @@ namespace Senai_SPMedGroup.Domains
                 entity.ToTable("ESPECIALIZACAO");
 
                 entity.HasIndex(e => e.Nome)
-                    .HasName("UQ__ESPECIAL__E2AB1FF481EBAB1D")
+                    .HasName("UQ__ESPECIAL__E2AB1FF4743F0D60")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -93,7 +93,7 @@ namespace Senai_SPMedGroup.Domains
                 entity.ToTable("MEDICOS");
 
                 entity.HasIndex(e => e.IdUsuario)
-                    .HasName("UQ__MEDICOS__91136B91C4B4C1D6")
+                    .HasName("UQ__MEDICOS__91136B91254F387A")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -123,12 +123,12 @@ namespace Senai_SPMedGroup.Domains
                 entity.HasOne(d => d.EspecializacaoNavigation)
                     .WithMany(p => p.Medicos)
                     .HasForeignKey(d => d.Especializacao)
-                    .HasConstraintName("FK__MEDICOS__ESPECIA__51EF2864");
+                    .HasConstraintName("FK__MEDICOS__ESPECIA__4460231C");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithOne(p => p.Medicos)
                     .HasForeignKey<Medicos>(d => d.IdUsuario)
-                    .HasConstraintName("FK__MEDICOS__ID_USUA__52E34C9D");
+                    .HasConstraintName("FK__MEDICOS__ID_USUA__45544755");
             });
 
             modelBuilder.Entity<Pacientes>(entity =>
@@ -136,11 +136,11 @@ namespace Senai_SPMedGroup.Domains
                 entity.ToTable("PACIENTES");
 
                 entity.HasIndex(e => e.Cpf)
-                    .HasName("UQ__PACIENTE__C1F89731FC1DDC9C")
+                    .HasName("UQ__PACIENTE__C1F89731EC078619")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Rg)
-                    .HasName("UQ__PACIENTE__321537C8BFD69AA6")
+                    .HasName("UQ__PACIENTE__321537C83BACD92D")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -168,7 +168,7 @@ namespace Senai_SPMedGroup.Domains
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Pacientes)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__PACIENTES__ID_US__4C364F0E");
+                    .HasConstraintName("FK__PACIENTES__ID_US__408F9238");
             });
 
             modelBuilder.Entity<Progresso>(entity =>
@@ -201,7 +201,7 @@ namespace Senai_SPMedGroup.Domains
                 entity.ToTable("USUARIOS");
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__USUARIOS__161CF724106DE61E")
+                    .HasName("UQ__USUARIOS__161CF724DD6E04DB")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -218,6 +218,12 @@ namespace Senai_SPMedGroup.Domains
 
                 entity.Property(e => e.IdTipoUsuario).HasColumnName("ID_TIPO_USUARIO");
 
+                entity.Property(e => e.Nome)
+                    .IsRequired()
+                    .HasColumnName("NOME")
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Senha)
                     .IsRequired()
                     .HasColumnName("SENHA")
@@ -227,7 +233,7 @@ namespace Senai_SPMedGroup.Domains
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdTipoUsuario)
-                    .HasConstraintName("FK__USUARIOS__ID_TIP__477199F1");
+                    .HasConstraintName("FK__USUARIOS__ID_TIP__3BCADD1B");
             });
         }
     }

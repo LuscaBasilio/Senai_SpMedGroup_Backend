@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
 using Senai_SPMedGroup.Repositories;
 using Senai_SPMedGroup.ViewModels;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
+using Senai_SPMedGroup.Domains;
 
 namespace Senai_SPMedGroup.Controllers
 {
@@ -41,7 +41,7 @@ namespace Senai_SPMedGroup.Controllers
                         new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, usuario.Id.ToString()),
                         new Claim(ClaimTypes.Role, usuario.IdTipoUsuarioNavigation.Tipo.ToString()),
-                        //new Claim("usario","valor")
+                        new Claim("Role","valor")
                     };
 
                 SymmetricSecurityKey key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SpMedGroupAuthenticationKey"));
@@ -55,7 +55,7 @@ namespace Senai_SPMedGroup.Controllers
                     expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: creds);
                 Console.WriteLine(token);
-                return Ok(new { M = "Acesso livre!", token = new JwtSecurityTokenHandler().WriteToken(token) });
+                return Ok(new { Mensagem = "Acesso livre!", token = new JwtSecurityTokenHandler().WriteToken(token) });
             }
             catch (Exception ex)
             {

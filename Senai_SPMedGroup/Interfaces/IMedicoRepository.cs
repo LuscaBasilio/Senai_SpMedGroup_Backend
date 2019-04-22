@@ -5,7 +5,7 @@ namespace Senai_SPMedGroup.Interfaces
 {
     interface IMedicoRepository
     {
-        List<Consulta> VerConsultas();
+        List<Consulta> VerConsultas(int Id);
 
         void DescricaoProntuario(Consulta desc);
     }

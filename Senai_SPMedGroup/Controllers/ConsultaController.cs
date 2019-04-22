@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
@@ -19,12 +14,14 @@ namespace Senai_SPMedGroup.Controllers
     public class ConsultaController : ControllerBase
     {
         private IConsultaRepository ConsultaRepository { get; set; }
+        private IPacienteRepository PacienteRepository { get; set; }
+        private IMedicoRepository MedicoRepository { get; set; }
 
         public ConsultaController()
         {
             ConsultaRepository = new ConsultaRepository();
         }
-
+       
         [HttpPost("cadastro")]
         [Authorize (Roles = "Administrador")]
         public IActionResult CadastrarConsulta(Consulta consulta)
@@ -55,24 +52,30 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
+        [HttpPost ("admconsul")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult ConsultarConsulta(int IdUser)
         {
 
 
             if (User.HasClaim(ClaimTypes.Role, "Adiministrador"))
             {
-
+                ConsultaRepository.ConsultarConsulta(IdUser);
+                return Ok();
             }
 
             if (User.HasClaim(ClaimTypes.Role, "Paciente"))
             {
-
+                PacienteRepository.VisualizarConsulta(IdUser);
+                return Ok();
             }
 
-            if(User.HasClaim(ClaimTypes.Role, "Médico"))
+            if (User.HasClaim(ClaimTypes.Role, "Médico"))
             {
-
+                MedicoRepository.VerConsultas(IdUser);
+                return Ok();
             }
+            else { return BadRequest("Como?"); }
 
         }
     }

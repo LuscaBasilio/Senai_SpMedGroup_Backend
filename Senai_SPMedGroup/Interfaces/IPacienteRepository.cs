@@ -5,6 +5,6 @@ namespace Senai_SPMedGroup.Interfaces
 {
     interface IPacienteRepository
     {
-        List<Consulta>VisualizarConsulta();
+        List<Consulta>VisualizarConsulta(int Id);
     }
 }

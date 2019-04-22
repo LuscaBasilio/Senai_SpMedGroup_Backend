@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Senai_SPMedGroup.Repositories;
 using Microsoft.AspNetCore.Authorization;
-using Senai_SPMedGroup.Domains;
 using System;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using Senai_SPMedGroup.Interfaces;
+using Senai_SPMedGroup.Domains;
 
 namespace Senai_SPMedGroup.Controllers
 {
@@ -21,13 +19,13 @@ namespace Senai_SPMedGroup.Controllers
             MedicoRepository = new MedicoRepository();
         }
 
-        [HttpGet("verConsultas")]
+        [HttpPost("verConsultas")]
         [Authorize(Roles = "Médico")]
-        public IActionResult VerConsultas()
+        public IActionResult VerConsultas(int Id)
         {
             try
             {
-                return Ok(new MedicoRepository().VerConsultas()); 
+                return Ok(new MedicoRepository().VerConsultas(Id)); 
             }
             catch(Exception ex)
             {

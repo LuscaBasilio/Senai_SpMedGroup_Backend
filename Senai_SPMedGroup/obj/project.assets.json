@@ -12764,23 +12764,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fic\\.nuget\\packages\\": {},
+    "C:\\Users\\47511187811\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fic\\source\\repos\\Senai_SPMedGroup\\Senai_SPMedGroup\\Senai_SPMedGroup.csproj",
+      "projectUniqueName": "C:\\Users\\47511187811\\Desktop\\Senai_SpMedGroup_Backend\\Senai_SPMedGroup\\Senai_SPMedGroup.csproj",
       "projectName": "Senai_SPMedGroup",
-      "projectPath": "C:\\Users\\fic\\source\\repos\\Senai_SPMedGroup\\Senai_SPMedGroup\\Senai_SPMedGroup.csproj",
-      "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fic\\source\\repos\\Senai_SPMedGroup\\Senai_SPMedGroup\\obj\\",
+      "projectPath": "C:\\Users\\47511187811\\Desktop\\Senai_SpMedGroup_Backend\\Senai_SPMedGroup\\Senai_SPMedGroup.csproj",
+      "packagesPath": "C:\\Users\\47511187811\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\47511187811\\Desktop\\Senai_SpMedGroup_Backend\\Senai_SPMedGroup\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\47511187811\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
