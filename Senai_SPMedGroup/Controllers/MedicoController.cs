@@ -33,13 +33,13 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpPut("descricao")]
+        [HttpPut("descricao/{id}")]
         [Authorize(Roles = "Médico")]
-        public IActionResult AlterarDescricao(Consulta desc)
+        public IActionResult AlterarDescricao(int id, string desc)
         {
             try
             {
-                MedicoRepository.DescricaoProntuario(desc);
+                MedicoRepository.DescricaoProntuario(id, desc);
                 return Ok();
             }
             catch(Exception ex)

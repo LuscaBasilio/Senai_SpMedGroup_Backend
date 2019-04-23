@@ -3,12 +3,15 @@ using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Senai_SPMedGroup.Repositories
 {
     public class ConsultaRepository : IConsultaRepository
     {
+        private string StringConexao = "Data Source=.\\SqlExpress; Initial Catalog=SENAI_SPMEDGROUP_MANHA;user id=sa; pwd=132";
+
         public void CadastrarConsulta(Consulta consulta)
         {
             using (SpMedGroupContext ctx = new SpMedGroupContext())
@@ -18,32 +21,32 @@ namespace Senai_SPMedGroup.Repositories
             }
         }
 
-        //Acho que além de cancelar, ele muda o status de progresso da consulta
         public void CancelarAgendamento(int id)
         {
-            using (SpMedGroupContext ctx = new SpMedGroupContext())
+            using (SqlConnection con = new SqlConnection(StringConexao))
             {
-                Consulta consulta = ctx.Consulta.Find(id);
+                string Alter = "UPDATE CONSULTA SET PROGRESSO = 4 WHERE ID = @ID";
+                con.Open();
 
-                if (id == consulta.Id)
+                using (SqlCommand cmd = new SqlCommand(Alter, con))
                 {
-                    ctx.Consulta.Update(consulta);
-                    ctx.SaveChanges();
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public List<Consulta> ConsultarConsulta(int IdUser)
-        {
-            using (SpMedGroupContext ctx = new SpMedGroupContext())
-            {
-                Usuarios usuario = ctx.Usuarios.Find(IdUser);
-                if (usuario.IdTipoUsuarioNavigation.Equals(IdUser))
-                {
-                   return ctx.Consulta.Include(Convert.ToString(IdUser)).ToList();
-                }
-                return null;
-            }
-        }
+        //public List<Consulta> ConsultarConsulta(int IdUser)
+        //{
+        //    using (SpMedGroupContext ctx = new SpMedGroupContext())
+        //    {
+        //        Usuarios usuario = ctx.Usuarios.Find(IdUser);
+        //        if (usuario.IdTipoUsuarioNavigation.Equals(IdUser))
+        //        {
+        //           return ctx.Consulta.Include(Convert.ToString(IdUser)).ToList();
+        //        }
+        //        return null;
+        //    }
+        //}
     }
 }

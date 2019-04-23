@@ -12,19 +12,18 @@ namespace Senai_SPMedGroup.Repositories
         //Atualiza a descrição do prontuario de um paciente
 
         //NÃO QUERIA TER USADO ISSO ;-;
-        public void DescricaoProntuario(Consulta desc)
+        public void DescricaoProntuario(int id, string desc)
         {
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
-                string Inserte = "INSERT INTO CONSULTA WHERE (OBSERVACAO) VALUES (@OBSERVACAO)";
+                string Update = " UPDATE CONSULTA SET OBSERVACAO = @OBSERVACAO WHERE ID = @ID";
 
                 con.Open();
 
-                using (SqlCommand ctx = new SqlCommand(Inserte, con))
-                {
-                    ctx.Parameters.AddWithValue("@OBSERVACAO", desc.Observacao);
-                    ctx.ExecuteNonQuery();
-                }
+                SqlCommand ctx = new SqlCommand(Update, con);
+                ctx.Parameters.AddWithValue("@ID", id);
+                ctx.Parameters.AddWithValue("@OBSERVACAO", desc);
+                ctx.ExecuteNonQuery();
             }
         }
 

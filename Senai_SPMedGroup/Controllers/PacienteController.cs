@@ -18,7 +18,7 @@ namespace Senai_SPMedGroup.Controllers
             PacienteRepository = new PacienteRepository();
         }
 
-        [HttpPost ("consulta")]
+        [HttpGet ("consulta/{Id}")]
         [Authorize (Roles = "Paciente, Administrador")]
         public IActionResult VisualizarConsultas(int Id)
         {

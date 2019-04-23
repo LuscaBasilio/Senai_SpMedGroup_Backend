@@ -37,7 +37,7 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut ("{id}")]
         [Authorize(Roles = "Administrador")]
         public IActionResult CancelarConsulta(int id)
         {
@@ -52,31 +52,31 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpPost ("admconsul")]
-        [Authorize(Roles = "Administrador")]
-        public IActionResult ConsultarConsulta(int IdUser)
-        {
+        //[HttpPost ("admconsul")]
+        //[Authorize(Roles = "Administrador")]
+        //public IActionResult ConsultarConsulta(int IdUser)
+        //{
 
 
-            if (User.HasClaim(ClaimTypes.Role, "Adiministrador"))
-            {
-                ConsultaRepository.ConsultarConsulta(IdUser);
-                return Ok();
-            }
+        //    if (User.HasClaim(ClaimTypes.Role, "Adiministrador"))
+        //    {
+        //        ConsultaRepository.ConsultarConsulta(IdUser);
+        //        return Ok();
+        //    }
 
-            if (User.HasClaim(ClaimTypes.Role, "Paciente"))
-            {
-                PacienteRepository.VisualizarConsulta(IdUser);
-                return Ok();
-            }
+        //    if (User.HasClaim(ClaimTypes.Role, "Paciente"))
+        //    {
+        //        PacienteRepository.VisualizarConsulta(IdUser);
+        //        return Ok();
+        //    }
 
-            if (User.HasClaim(ClaimTypes.Role, "Médico"))
-            {
-                MedicoRepository.VerConsultas(IdUser);
-                return Ok();
-            }
-            else { return BadRequest("Como?"); }
+        //    if (User.HasClaim(ClaimTypes.Role, "Médico"))
+        //    {
+        //        MedicoRepository.VerConsultas(IdUser);
+        //        return Ok();
+        //    }
+        //    else { return BadRequest("Como?"); }
 
-        }
+        //}
     }
 }
