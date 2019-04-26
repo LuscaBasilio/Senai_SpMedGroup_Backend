@@ -1,4 +1,5 @@
 ﻿using Senai_SPMedGroup.Domains;
+using System.Collections.Generic;
 
 namespace Senai_SPMedGroup.Interfaces
 {
@@ -11,5 +12,7 @@ namespace Senai_SPMedGroup.Interfaces
         void Deletar(int id);
 
         Usuarios EncontrarUsuario( string email, string senha);
+
+        List<Usuarios> ListarUsuarios();
     }
 }

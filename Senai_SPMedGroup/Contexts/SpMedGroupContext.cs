@@ -231,7 +231,7 @@ namespace Senai_SPMedGroup.Domains
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
-                    .WithMany(p => p.Usuarios)
+                   .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdTipoUsuario)
                     .HasConstraintName("FK__USUARIOS__ID_TIP__3BCADD1B");
             });

@@ -80,6 +80,20 @@ namespace Senai_SPMedGroup.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpGet("usuarios")]
+        [Authorize(Roles = "Administrador")]
+        public IActionResult ListarUsuarios()
+        {
+            try
+            {
+                return Ok(UsuarioRepository.ListarUsuarios());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 
 }

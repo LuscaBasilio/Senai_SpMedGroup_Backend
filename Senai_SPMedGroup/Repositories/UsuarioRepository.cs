@@ -2,6 +2,7 @@
 using Senai_SPMedGroup.Domains;
 using Senai_SPMedGroup.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Senai_SPMedGroup.Repositories
@@ -47,6 +48,14 @@ namespace Senai_SPMedGroup.Repositories
             using(SpMedGroupContext ctx = new SpMedGroupContext())
             {
                return ctx.Usuarios.Include(x => x.IdTipoUsuarioNavigation).FirstOrDefault(x => x.Email == email && x.Senha == senha);
+            }
+        }
+
+        public List<Usuarios> ListarUsuarios()
+        {
+            using(SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                return ctx.Usuarios.ToList();
             }
         }
     }
