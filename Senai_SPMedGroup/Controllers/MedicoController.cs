@@ -19,7 +19,7 @@ namespace Senai_SPMedGroup.Controllers
             MedicoRepository = new MedicoRepository();
         }
 
-        [HttpPost("verConsultas")]
+        [HttpPost("verConsultas/{Id}")]
         [Authorize(Roles = "Médico")]
         public IActionResult VerConsultas(int Id)
         {
@@ -33,13 +33,13 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpPut("descricao/{id}")]
+        [HttpPut("alter")]
         [Authorize(Roles = "Médico")]
-        public IActionResult AlterarDescricao(int id, string desc)
+        public IActionResult AlterarConsulta(Consulta consulta)
         {
             try
             {
-                MedicoRepository.DescricaoProntuario(id, desc);
+                MedicoRepository.AlterarConsulta(consulta);
                 return Ok();
             }
             catch(Exception ex)

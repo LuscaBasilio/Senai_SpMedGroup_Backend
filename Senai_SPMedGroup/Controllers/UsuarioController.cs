@@ -34,7 +34,7 @@ namespace Senai_SPMedGroup.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        //RESPOSTA DA VIDA ACIMA ^^^
+        //RESPOSTA DA VIDA ACIMA ^w^
 
         [HttpPost("cadastrar")]
         [Authorize(Roles = "Administrador")]

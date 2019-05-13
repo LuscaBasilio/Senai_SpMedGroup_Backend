@@ -22,8 +22,17 @@ namespace Senai_SPMedGroup.Repositories
         {
             using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                ctx.Usuarios.Update(usuario);
-                ctx.SaveChanges();
+                Usuarios userExist = ctx.Usuarios.Find(usuario.Id);
+                if (userExist != null)
+                {
+                    userExist.Nome = usuario.Nome;
+                    userExist.Email = usuario.Email;
+                    userExist.Senha = usuario.Senha;
+                    userExist.IdTipoUsuario = usuario.IdTipoUsuario;
+                    userExist.DataNascimento = usuario.DataNascimento;
+                    ctx.Usuarios.Update(userExist);
+                    ctx.SaveChanges();
+                }
             }
         }
 

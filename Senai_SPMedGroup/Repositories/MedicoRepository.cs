@@ -3,27 +3,30 @@ using Senai_SPMedGroup.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Senai_SPMedGroup.Repositories
 {
     public class MedicoRepository : IMedicoRepository
     {
-        private string StringConexao = "Data Source=.\\SqlExpress; Initial Catalog=SENAI_SPMEDGROUP_MANHA;user id=sa; pwd=132";
-        //Atualiza a descrição do prontuario de um paciente
-
-        //NÃO QUERIA TER USADO ISSO ;-;
-        public void DescricaoProntuario(int id, string desc)
+        public void AlterarConsulta(Consulta consulta)
         {
-            using (SqlConnection con = new SqlConnection(StringConexao))
+            using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                string Update = " UPDATE CONSULTA SET OBSERVACAO = @OBSERVACAO WHERE ID = @ID";
+                Consulta consultaExist = ctx.Consulta.Find(consulta.Id);
 
-                con.Open();
+                if (consultaExist != null)
+                {
+                    consultaExist.Progresso = consulta.Progresso;
+                    consultaExist.Observacao = consulta.Observacao;
+                    ctx.Consulta.Update(consultaExist);
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    string a = Convert.ToString(new { m = "Non ecziste" });
+                }
 
-                SqlCommand ctx = new SqlCommand(Update, con);
-                ctx.Parameters.AddWithValue("@ID", id);
-                ctx.Parameters.AddWithValue("@OBSERVACAO", desc);
-                ctx.ExecuteNonQuery();
             }
         }
 
@@ -31,27 +34,19 @@ namespace Senai_SPMedGroup.Repositories
         {
             List<Consulta> consultas = new List<Consulta>();
 
-                using (SqlConnection con = new SqlConnection(StringConexao))
+            using (SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                Consulta consultaExist = new Consulta();
+                Medicos medico = ctx.Medicos.Find(Id);
+
+                if(consultaExist == null)
                 {
-                    string Select = "SELECT * FROM CONSULTA WHERE ID_MEDICO = @ID";
-                    con.Open();
-                    SqlDataReader Reader;
-
-                    using (SqlCommand cmd = new SqlCommand(Select, con))
-                    {
-                    Reader = cmd.ExecuteReader();
-
-                    while (Reader.Read())
-                    {
-                        Consulta verConsulta = new Consulta
-                        {
-                           Id = Convert.ToInt32(Reader["@ID"])
-                        };
-                        consultas.Add(verConsulta);
-                    }
+                    string a = Convert.ToString(new { m = "Non ecziste" });
                 }
+
+                return ctx.Consulta.Where(x => x.IdMedico == medico.Id).ToList();
+
             }
-            return consultas;
         }
     }
 }

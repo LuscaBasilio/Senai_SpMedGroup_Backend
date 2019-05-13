@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "51d65b66aba571693cc07317dcbc7429fe667e31"
+    "signature": "44b086b058c27ce2cb49a72929a4c36e9e17e5a9"
   },
   "compilationOptions": {
     "defines": [
@@ -32,9 +32,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
-          "Swagger": "1.0.0",
           "Swashbuckle.AspNetCore": "4.0.1",
-          "Swashbuckle.AspNetCore.Swagger": "4.0.1",
           "System.IdentityModel.Tokens.Jwt": "5.4.0"
         },
         "runtime": {
@@ -595,21 +593,6 @@
         },
         "compile": {
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
-        }
-      },
-      "Swagger/1.0.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Core": "2.1.1",
-          "Microsoft.AspNetCore.Mvc.Formatters.Json": "2.1.1"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Swashbuckle.Swagger.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard1.6/Swashbuckle.Swagger.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/4.0.1": {
@@ -3853,13 +3836,6 @@
       "sha512": "sha512-KuqDbPzjOWbUM6gPMbkvdhlQ10roQAoMM7mNZ8hcY/fH+9J4Zc+qT8dLWoNzGyr0OrxQVdZdbSjy/fxwoICgGg==",
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
-    },
-    "Swagger/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mZ2abnFgR6a+yDj1zCpP9AjOGGvWgHJT7GQ9N8AK7rTfmYqJLBcnMFvp2/hcDnwo7ok7wUdK4FdHcC8ciGMAwA==",
-      "path": "swagger/1.0.0",
-      "hashPath": "swagger.1.0.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/4.0.1": {
       "type": "package",

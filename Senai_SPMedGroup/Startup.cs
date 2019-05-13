@@ -67,8 +67,8 @@ namespace Senai_SPMedGroup
             }
             app.UseCors("CorsPolicy");
 
+            app.UseSwagger();
             app.UseAuthentication();
-
             app.UseSwaggerUI(x =>
             {
                 x.SwaggerEndpoint("/swagger/v1/swagger.json", "SpMedGroup");
