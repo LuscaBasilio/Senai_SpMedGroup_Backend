@@ -94,6 +94,20 @@ namespace Senai_SPMedGroup.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpGet("tipos")]
+        [Authorize(Roles = "Administrador")]
+        public IActionResult listarTipos()
+        {
+            try
+            {
+                return Ok(UsuarioRepository.listarTipos());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 
 }

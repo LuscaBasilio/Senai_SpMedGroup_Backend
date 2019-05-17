@@ -14,5 +14,7 @@ namespace Senai_SPMedGroup.Interfaces
         Usuarios EncontrarUsuario( string email, string senha);
 
         List<Usuarios> ListarUsuarios();
+
+        List<TiposUsuarios> listarTipos();
     }
 }
