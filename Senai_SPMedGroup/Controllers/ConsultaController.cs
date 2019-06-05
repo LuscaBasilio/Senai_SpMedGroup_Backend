@@ -14,8 +14,6 @@ namespace Senai_SPMedGroup.Controllers
     public class ConsultaController : ControllerBase
     {
         private IConsultaRepository ConsultaRepository { get; set; }
-        private IPacienteRepository PacienteRepository { get; set; }
-        private IMedicoRepository MedicoRepository { get; set; }
 
         public ConsultaController()
         {
