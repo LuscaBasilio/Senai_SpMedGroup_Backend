@@ -21,7 +21,7 @@ namespace Senai_SPMedGroup.Controllers
         }
 
         //RESPOSTA DA VIDA ABAIXO vvv
-        [HttpGet("ver")]
+        [HttpGet("Consultas")]
         [Authorize(Roles = "Administrador")]
         public IActionResult VisualizarConsul()
         {
@@ -36,7 +36,7 @@ namespace Senai_SPMedGroup.Controllers
         }
         //RESPOSTA DA VIDA ACIMA ^w^
 
-        [HttpPost("cadastrar")]
+        [HttpPost("Cadastrar")]
         [Authorize(Roles = "Administrador")]
         public IActionResult Cadastrar(Usuarios usuario)
         {
@@ -51,7 +51,7 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpPut("alterar")]
+        [HttpPut("Alterar")]
         [Authorize(Roles = "Administrador")]
         public IActionResult Alterar(Usuarios usuario)
         {
@@ -66,9 +66,9 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         [Authorize(Roles = "Administrador")]
-        public IActionResult Deletar(int id)
+        public IActionResult Deletar([FromBody]int id)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpGet("usuarios")]
+        [HttpGet("Usuarios")]
         [Authorize(Roles = "Administrador")]
         public IActionResult ListarUsuarios()
         {
@@ -95,7 +95,7 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpGet("tipos")]
+        [HttpGet("Tipos")]
         [Authorize(Roles = "Administrador")]
         public IActionResult listarTipos()
         {

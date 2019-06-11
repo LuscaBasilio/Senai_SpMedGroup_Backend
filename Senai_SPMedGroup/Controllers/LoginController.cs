@@ -22,7 +22,7 @@ namespace Senai_SPMedGroup.Controllers
             UsuarioRepository = new UsuarioRepository();
         }
 
-        [HttpPost("log")]
+        [HttpPost]
         public IActionResult Login(LoginViewModel login)
         {
             try
@@ -41,7 +41,7 @@ namespace Senai_SPMedGroup.Controllers
                         new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, usuario.Id.ToString()),
                         new Claim(ClaimTypes.Role, usuario.IdTipoUsuarioNavigation.Tipo.ToString()),
-                        new Claim("Role", usuario.IdTipoUsuarioNavigation.Tipo.ToString())
+                        new Claim("auth", usuario.IdTipoUsuarioNavigation.Tipo)
                     };
 
                 SymmetricSecurityKey key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SpMedGroupAuthenticationKey"));

@@ -20,7 +20,7 @@ namespace Senai_SPMedGroup.Controllers
             ConsultaRepository = new ConsultaRepository();
         }
        
-        [HttpPost("cadastro")]
+        [HttpPost("Cadastro")]
         [Authorize (Roles = "Administrador")]
         public IActionResult CadastrarConsulta(Consulta consulta)
         {
@@ -35,7 +35,7 @@ namespace Senai_SPMedGroup.Controllers
             }
         }
 
-        [HttpPut ("{id}")]
+        [HttpPut]
         [Authorize(Roles = "Administrador")]
         public IActionResult CancelarConsulta(int id)
         {

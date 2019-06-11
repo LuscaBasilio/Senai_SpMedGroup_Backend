@@ -75,5 +75,13 @@ namespace Senai_SPMedGroup.Repositories
                 return ctx.TiposUsuarios.ToList();
             }
         }
+
+        public Usuarios BuscarId(int id)
+        {
+           using (SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                return ctx.Usuarios.Find(id);
+            }
+        }
     }
 }

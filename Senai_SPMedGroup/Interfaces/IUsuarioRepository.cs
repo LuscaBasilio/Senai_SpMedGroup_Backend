@@ -16,5 +16,7 @@ namespace Senai_SPMedGroup.Interfaces
         List<Usuarios> ListarUsuarios();
 
         List<TiposUsuarios> listarTipos();
+
+        Usuarios BuscarId(int id);
     }
 }

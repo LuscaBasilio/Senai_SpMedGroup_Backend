@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Senai_SPMedGroup.Interfaces;
@@ -18,13 +20,17 @@ namespace Senai_SPMedGroup.Controllers
             PacienteRepository = new PacienteRepository();
         }
 
-        [HttpGet ("consulta/{Id}")]
-        [Authorize (Roles = "Paciente, Administrador")]
-        public IActionResult VisualizarConsultas(int Id)
+        [HttpGet]
+        [Authorize (Roles = "Paciente")]
+        public IActionResult VisualizarConsultas()
         {
             try
             {
-                return Ok(new PacienteRepository().VisualizarConsulta(Id));
+                int id = Convert.ToInt32(HttpContext.User.Claims.First(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                int idPaciente = PacienteRepository.BuscarID(id).Id;
+
+                return Ok(new MedicoRepository().VerConsultas(idPaciente));
             }
             catch(Exception ex)
             {

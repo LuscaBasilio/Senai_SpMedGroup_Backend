@@ -26,26 +26,23 @@ namespace Senai_SPMedGroup.Repositories
                 {
                     string a = Convert.ToString(new { m = "Non ecziste" });
                 }
-
             }
         }
 
-        public List<Consulta> VerConsultas(int Id)
+        public List<Consulta> VerConsultas(int id)
         {
-            List<Consulta> consultas = new List<Consulta>();
+            using (SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                return ctx.Consulta.Where(x => x.IdMedico == id).ToList();
+            }
+        }
+
+        public Medicos BuscarPorId(int id)
+        {
 
             using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                Consulta consultaExist = new Consulta();
-                Medicos medico = ctx.Medicos.Find(Id);
-
-                if(consultaExist == null)
-                {
-                    string a = Convert.ToString(new { m = "Non ecziste" });
-                }
-
-                return ctx.Consulta.Where(x => x.IdMedico == medico.Id).ToList();
-
+                return ctx.Medicos.FirstOrDefault(x => x.IdUsuario == id);
             }
         }
     }
