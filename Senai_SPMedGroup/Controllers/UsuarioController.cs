@@ -108,6 +108,34 @@ namespace Senai_SPMedGroup.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpGet("Pacientes")]
+        [Authorize(Roles ="Administrador")]
+        public IActionResult ListarPacientes()
+        {
+            try
+            {
+                return Ok(UsuarioRepository.ListarPacientes());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpGet("Medicos")]
+        [Authorize(Roles = "Administrador")]
+        public IActionResult ListarMedicos()
+        {
+            try
+            {
+                return Ok(UsuarioRepository.ListarMedicos());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 
 }

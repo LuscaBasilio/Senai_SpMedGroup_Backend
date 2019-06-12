@@ -10,8 +10,6 @@ namespace Senai_SPMedGroup.Repositories
 {
     public class ConsultaRepository : IConsultaRepository
     {
-        private string StringConexao = "Data Source=.\\SqlExpress; Initial Catalog=SENAI_SPMEDGROUP_MANHA;user id=sa; pwd=132";
-
         public void CadastrarConsulta(Consulta consulta)
         {
             using (SpMedGroupContext ctx = new SpMedGroupContext())
@@ -23,15 +21,16 @@ namespace Senai_SPMedGroup.Repositories
 
         public void CancelarAgendamento(int id)
         {
-            using (SqlConnection con = new SqlConnection(StringConexao))
+            using(SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                string Alter = "UPDATE CONSULTA SET PROGRESSO = 4 WHERE ID = @ID";
-                con.Open();
+                Consulta exist = ctx.Consulta.Find(id);
 
-                using (SqlCommand cmd = new SqlCommand(Alter, con))
+                if(exist != null)
                 {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.ExecuteNonQuery();
+                    exist.Progresso = 4;
+
+                    ctx.Consulta.Update(exist);
+                    ctx.SaveChanges();
                 }
             }
         }
@@ -48,5 +47,13 @@ namespace Senai_SPMedGroup.Repositories
         //        return null;
         //    }
         //}
+
+        public List<Progresso> ListarProgresso()
+        {
+            using (SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                return ctx.Progresso.ToList();
+            }
+        }
     }
 }

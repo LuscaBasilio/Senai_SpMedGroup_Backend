@@ -39,7 +39,6 @@ namespace Senai_SPMedGroup.Repositories
 
         public Medicos BuscarPorId(int id)
         {
-
             using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
                 return ctx.Medicos.FirstOrDefault(x => x.IdUsuario == id);

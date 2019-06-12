@@ -37,7 +37,7 @@ namespace Senai_SPMedGroup.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Administrador")]
-        public IActionResult CancelarConsulta(int id)
+        public IActionResult CancelarConsulta([FromBody]int id)
         {
             try
             {
@@ -76,5 +76,19 @@ namespace Senai_SPMedGroup.Controllers
         //    else { return BadRequest("Como?"); }
 
         //}
+
+        [HttpGet("Progresso")]
+        [Authorize(Roles = "Administrador")]
+        public IActionResult ListarProgresso()
+        {
+            try
+            {
+                return Ok(ConsultaRepository.ListarProgresso());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

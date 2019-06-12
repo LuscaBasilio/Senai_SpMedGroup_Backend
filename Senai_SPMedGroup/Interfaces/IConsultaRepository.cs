@@ -10,5 +10,7 @@ namespace Senai_SPMedGroup.Interfaces
         void CancelarAgendamento(int Id);
 
         //List<Consulta> ConsultarConsulta(int IdUser);
+
+        List<Progresso> ListarProgresso();
     }
 }

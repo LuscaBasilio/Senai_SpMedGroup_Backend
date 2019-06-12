@@ -83,5 +83,21 @@ namespace Senai_SPMedGroup.Repositories
                 return ctx.Usuarios.Find(id);
             }
         }
+
+        public List<Usuarios> ListarMedicos()
+        {
+            using (SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                return ctx.Usuarios.Where(x => x.IdTipoUsuario == 2).ToList();
+            }
+        }
+
+        public List<Usuarios> ListarPacientes()
+        {
+            using (SpMedGroupContext ctx = new SpMedGroupContext())
+            {
+                return ctx.Usuarios.Where(x => x.IdTipoUsuario == 1).ToList();
+            }
+        }
     }
 }

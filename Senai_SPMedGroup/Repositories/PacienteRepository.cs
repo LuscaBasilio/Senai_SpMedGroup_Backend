@@ -15,7 +15,6 @@ namespace Senai_SPMedGroup.Repositories
         {
             using (SpMedGroupContext ctx = new SpMedGroupContext())
             {
-                Pacientes paciente = new Pacientes();
                 return ctx.Consulta.ToList();
             }
         }
